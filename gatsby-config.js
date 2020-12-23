@@ -1,17 +1,26 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Özgür Tanrıverdi`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Özgür Tanrıverdi`,
+      summary: `a serial learner with a love to develop software people can't stop talking about.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `Personal blog of Ozgur Tanriverdi. A serial learner with a love to develop software people can't stop talking about.`,
+    siteUrl: `https://otrv.dev`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `otanriverdi`,
+      github: 'otanriverdi',
+      linkedin: 'otrv',
     },
   },
   plugins: [
+    `gatsby-plugin-advanced-sitemap`,
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://otrv.dev`,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -60,18 +69,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Ozgur Tanriverdi`,
+        short_name: `OTRV`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
+        background_color: `#eff0f3`,
+        theme_color: `#ff8e3c`,
         display: `minimal-ui`,
         icon: `content/assets/gatsby-icon.png`,
       },
     },
     `gatsby-plugin-react-helmet`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
-}
+};

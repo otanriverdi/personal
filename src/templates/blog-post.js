@@ -1,14 +1,14 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react';
+import {Link, graphql} from 'gatsby';
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Bio from '../components/bio';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
-const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const { previous, next } = data
+const BlogPostTemplate = ({data, location}) => {
+  const post = data.markdownRemark;
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+  const {previous, next} = data;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -16,17 +16,21 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
+      <Bio />
+      <hr />
       <article
         className="blog-post"
         itemScope
         itemType="http://schema.org/Article"
       >
         <header>
-          <h1 itemProp="headline">{post.frontmatter.title}</h1>
+          <h1 style={{marginTop: '2rem'}} itemProp="headline">
+            {post.frontmatter.title}
+          </h1>
           <p>{post.frontmatter.date}</p>
         </header>
         <section
-          dangerouslySetInnerHTML={{ __html: post.html }}
+          dangerouslySetInnerHTML={{__html: post.html}}
           itemProp="articleBody"
         />
         <hr />
@@ -61,10 +65,10 @@ const BlogPostTemplate = ({ data, location }) => {
         </ul>
       </nav>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug(
@@ -77,7 +81,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(id: { eq: $id }) {
+    markdownRemark(id: {eq: $id}) {
       id
       excerpt(pruneLength: 160)
       html
@@ -87,7 +91,7 @@ export const pageQuery = graphql`
         description
       }
     }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
+    previous: markdownRemark(id: {eq: $previousPostId}) {
       fields {
         slug
       }
@@ -95,7 +99,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    next: markdownRemark(id: { eq: $nextPostId }) {
+    next: markdownRemark(id: {eq: $nextPostId}) {
       fields {
         slug
       }
@@ -104,4 +108,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
