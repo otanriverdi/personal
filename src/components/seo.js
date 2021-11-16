@@ -5,17 +5,18 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import PropTypes from 'prop-types';
+import {Helmet} from 'react-helmet';
+import {useStaticQuery, graphql} from 'gatsby';
 
-const SEO = ({ description, lang, meta, title }) => {
-  const { site } = useStaticQuery(
+const SEO = ({description, lang, meta, title, coverPublicURL = null, article = false}) => {
+  const {site} = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
+            siteUrl
             title
             description
             social {
@@ -24,11 +25,22 @@ const SEO = ({ description, lang, meta, title }) => {
           }
         }
       }
-    `
-  )
+    `,
+  );
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = description || site.siteMetadata.description;
+  const defaultTitle = site.siteMetadata?.title;
+
+  const cover = coverPublicURL
+    ? `${site.siteMetadata.siteUrl}${coverPublicURL}`
+    : null;
+
+  const coverMeta = cover
+    ? [
+        {name: 'og:image', content: cover},
+        {name: 'twitter:image', concent: cover},
+      ]
+    : [];
 
   return (
     <Helmet
@@ -52,7 +64,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: article ? `article` : `website`,
         },
         {
           name: `twitter:card`,
@@ -70,22 +82,26 @@ const SEO = ({ description, lang, meta, title }) => {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+      ]
+        .concat(coverMeta)
+        .concat(meta)}
     />
-  )
-}
+  );
+};
 
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-}
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-}
+  article: PropTypes.bool,
+  coverPublicURL: PropTypes.string,
+};
 
-export default SEO
+export default SEO;

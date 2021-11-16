@@ -5,10 +5,10 @@ module.exports = {
       name: `Özgür Tanrıverdi`,
       summary: `a serial learner with a love to develop software people can't stop talking about.`,
     },
-    description: `Personal blog of Ozgur Tanriverdi. A serial learner with a love to develop software people can't stop talking about.`,
+    description: `Hi! I'm Özgür Tanrıverdi. A software developer and a serial learner with a love to develop software people can't stop talking about.`,
     siteUrl: `https://otrv.dev`,
     social: {
-      twitter: `otanriverdi`,
+      twitter: `otrv45`,
       github: 'otanriverdi',
       linkedin: 'otrv',
     },
@@ -62,7 +62,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-168002211-1`,
       },
     },
     `gatsby-plugin-feed`,

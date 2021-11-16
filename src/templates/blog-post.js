@@ -15,6 +15,8 @@ const BlogPostTemplate = ({data, location}) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+        coverPublicURL={post.frontmatter.coverImage.publicURL}
+        article
       />
       <Bio />
       <hr />
@@ -89,6 +91,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        coverImage {
+          publicURL
+        }
       }
     }
     previous: markdownRemark(id: {eq: $previousPostId}) {
