@@ -3,7 +3,7 @@ module.exports = {
     title: `Özgür Tanrıverdi`,
     author: {
       name: `Özgür Tanrıverdi`,
-      summary: `a serial learner with a love to develop software people can't stop talking about.`,
+      summary: `a software developer and a serial learner with a love to develop software people can't stop talking about. I am also the dev #5939 on the Developer_DAO!`,
     },
     description: `Hi! I'm Özgür Tanrıverdi. A software developer and a serial learner with a love to develop software people can't stop talking about.`,
     siteUrl: `https://otrv.dev`,
